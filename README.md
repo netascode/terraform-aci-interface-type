@@ -6,7 +6,7 @@
 Manages Interface Type
 
 Location in GUI:
-`Fabric` » `Inventory`
+`Fabric` » `Inventory` » `Pod XXX` » `Node XXX` » `Interface`
 
 ## Examples
 
