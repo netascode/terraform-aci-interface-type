@@ -10,12 +10,12 @@ variable "pod_id" {
 }
 
 variable "node_id" {
-  description = "Interface Node ID. Minimum value: `1`. Maximum value: `400`."
+  description = "Interface Node ID. Minimum value: `1`. Maximum value: `4000`."
   type        = number
 
   validation {
     condition     = var.node_id >= 1 && var.node_id <= 4000
-    error_message = "Minimum value: `1`. Maximum value: `400`."
+    error_message = "Minimum value: `1`. Maximum value: `4000`."
   }
 }
 
@@ -41,7 +41,7 @@ variable "port" {
 }
 
 variable "type" {
-  description = "Interface Type. Minimum value: `1`. Valid values are `uplink` or `downlink`"
+  description = "Interface Type. Valid values are `uplink` or `downlink`"
   type        = string
 
   validation {

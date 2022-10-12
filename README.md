@@ -1,5 +1,5 @@
 <!-- BEGIN_TF_DOCS -->
-[![Tests](https://github.com/netascode/terraform-aci-interface-type/actions/workflows/test.yml/badge.svg)](https://github.com/netascode/terraform-aci-scaffolding/actions/workflows/test.yml)
+[![Tests](https://github.com/netascode/terraform-aci-interface-type/actions/workflows/test.yml/badge.svg)](https://github.com/netascode/terraform-aci-interface-type/actions/workflows/test.yml)
 
 # Terraform ACI Interface Type Module
 
@@ -13,7 +13,7 @@ Location in GUI:
 ```hcl
 module "aci_interface_type" {
   source  = "netascode/interface-type/aci"
-  version = ">= 0.0.1"
+  version = ">= 0.1.0"
 
   pod_id  = 2
   node_id = 101
@@ -27,7 +27,7 @@ module "aci_interface_type" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
 | <a name="requirement_aci"></a> [aci](#requirement\_aci) | >= 2.0.0 |
 
 ## Providers
@@ -41,10 +41,10 @@ module "aci_interface_type" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_pod_id"></a> [pod\_id](#input\_pod\_id) | Interface Pod ID. Minimum value: `1`. Maximum value: `255`. | `number` | `1` | no |
-| <a name="input_node_id"></a> [node\_id](#input\_node\_id) | Interface Node ID. Minimum value: `1`. Maximum value: `400`. | `number` | n/a | yes |
+| <a name="input_node_id"></a> [node\_id](#input\_node\_id) | Interface Node ID. Minimum value: `1`. Maximum value: `4000`. | `number` | n/a | yes |
 | <a name="input_module"></a> [module](#input\_module) | Interface Module. Minimum value: `1`. Maximum value: `9`. | `number` | `1` | no |
 | <a name="input_port"></a> [port](#input\_port) | Interface Port. Minimum value: `1`. Maximum value: `127`. | `number` | n/a | yes |
-| <a name="input_type"></a> [type](#input\_type) | Interface Type. Minimum value: `1`. Valid values are `uplink` or `downlink` | `string` | n/a | yes |
+| <a name="input_type"></a> [type](#input\_type) | Interface Type. Valid values are `uplink` or `downlink` | `string` | n/a | yes |
 
 ## Outputs
 
