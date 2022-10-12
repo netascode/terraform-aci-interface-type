@@ -1,31 +1,52 @@
-variable "name" {
-  description = "Tenant name."
-  type        = string
+variable "pod_id" {
+  description = "Interface Pod ID. Minimum value: `1`. Maximum value: `255`."
+  type        = number
+  default     = 1
 
   validation {
-    condition     = can(regex("^[a-zA-Z0-9_.-]{0,64}$", var.name))
-    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `_`, `.`, `-`. Maximum characters: 64."
+    condition     = var.pod_id >= 1 && var.pod_id <= 255
+    error_message = "Minimum value: `1`. Maximum value: `255`."
   }
 }
 
-variable "alias" {
-  description = "Tenant alias."
-  type        = string
-  default     = ""
+variable "node_id" {
+  description = "Interface Node ID. Minimum value: `1`. Maximum value: `400`."
+  type        = number
 
   validation {
-    condition     = can(regex("^[a-zA-Z0-9_.-]{0,64}$", var.alias))
-    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `_`, `.`, `-`. Maximum characters: 64."
+    condition     = var.node_id >= 1 && var.node_id <= 4000
+    error_message = "Minimum value: `1`. Maximum value: `400`."
   }
 }
 
-variable "description" {
-  description = "Tenant description."
-  type        = string
-  default     = ""
+variable "module" {
+  description = "Interface Module. Minimum value: `1`. Maximum value: `9`."
+  type        = number
+  default     = 1
 
   validation {
-    condition     = can(regex("^[a-zA-Z0-9\\!#$%()*,-./:;@ _{|}~?&+]{0,128}$", var.description))
-    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `\\`, `!`, `#`, `$`, `%`, `(`, `)`, `*`, `,`, `-`, `.`, `/`, `:`, `;`, `@`, ` `, `_`, `{`, `|`, }`, `~`, `?`, `&`, `+`. Maximum characters: 128."
+    condition     = var.module >= 1 && var.module <= 9
+    error_message = "Minimum value: `1`. Maximum value: `9`."
   }
 }
+
+variable "port" {
+  description = "Interface Port. Minimum value: `1`. Maximum value: `127`."
+  type        = number
+
+  validation {
+    condition     = var.port >= 1 && var.port <= 127
+    error_message = "Minimum value: `1`. Maximum value: `127`."
+  }
+}
+
+variable "type" {
+  description = "Interface Type. Minimum value: `1`. Valid values are `uplink` or `downlink`"
+  type        = string
+
+  validation {
+    condition     = contains(["uplink", "downlink"], var.type)
+    error_message = "Valid values are `uplink` or `downlink`."
+  }
+}
+

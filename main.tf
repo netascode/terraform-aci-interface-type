@@ -1,9 +1,8 @@
-resource "aci_rest_managed" "fvTenant" {
-  dn         = "uni/tn-${var.name}"
-  class_name = "fvTenant"
+resource "aci_rest_managed" "infraRsPortDirection" {
+  dn         = "uni/infra/prtdirec/rsportDirection-[topology/pod-${var.pod_id}/paths-${var.node_id}/pathep-[eth${var.module}/${var.port}]]"
+  class_name = "infraRsPortDirection"
   content = {
-    name      = var.name
-    nameAlias = var.alias
-    descr     = var.description
+    tDn   = "topology/pod-${var.pod_id}/paths-${var.node_id}/pathep-[eth${var.module}/${var.port}]"
+    direc = var.type == "uplink" ? "UpLink" : "DownLink"
   }
 }
